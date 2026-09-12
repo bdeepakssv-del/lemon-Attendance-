@@ -1,0 +1,22 @@
+{
+  "name": "HotelLemon Staff Attendance",
+  "short_name": "HotelLemon",
+  "description": "HotelLemon staff attendance management system — Live photo verification and analytics",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#06060a",
+  "theme_color": "#f4c542",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "image/LOGO.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "image/LOGO.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

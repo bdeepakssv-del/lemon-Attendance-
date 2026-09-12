@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HotelLemon Staff Portal — Check in and out with live photo verification and view your attendance history.">
+  <title>HotelLemon — Staff Portal</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="image/LOGO.png">
+</head>
+<body>
+
+  <!-- ═══ PRELOADER ═══ -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-ring">
+        <div class="preloader-ring-arc"></div>
+        <img src="image/LOGO.png" alt="HotelLemon" class="preloader-logo" onerror="this.style.display='none'">
+      </div>
+      <div class="preloader-text">
+        <span>H</span><span>o</span><span>t</span><span>e</span><span>l</span><span>L</span><span>e</span><span>m</span><span>o</span><span>n</span>
+      </div>
+      <div class="preloader-bar">
+        <div class="preloader-bar-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Animated Background Scene -->
+  <div class="bg-scene">
+    <div class="bg-gradient"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
+    <div class="bg-particles">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+    </div>
+    <div class="bg-vignette"></div>
+  </div>
+
+  <div class="staff-layout">
+
+    <!-- ── Header ────────────────────────────────────────── -->
+    <header class="staff-header">
+      <div class="staff-header-brand">
+        <img src="image/LOGO.png" alt="HotelLemon" style="width:32px;height:32px;object-fit:contain;" onerror="this.style.display='none'">
+        <h1 data-i18n="hotelLemon">HotelLemon</h1>
+      </div>
+      <div class="staff-header-right">
+        <div class="language-control">
+          <span class="language-icon">🌐</span>
+          <label for="language-select" class="sr-only">Language</label>
+          <select
+            id="language-select"
+            class="language-select"
+            aria-label="Select language">
+          </select>
+        </div>
+        <span class="header-clock" id="live-clock"></span>
+        <button class="btn btn-outline btn-sm" id="btn-logout">🚪 <span data-i18n="logout">Logout</span></button>
+      </div>
+    </header>
+
+    <!-- ── Body ──────────────────────────────────────────── -->
+    <div class="staff-portal-body">
+
+      <!-- Greeting -->
+      <h1 class="staff-greeting" id="greeting" data-i18n="goodMorning">Good Morning!</h1>
+      <p class="staff-date" id="current-date"></p>
+
+      <!-- Profile Card -->
+      <div class="profile-card glass">
+        <div class="profile-avatar" id="staff-avatar"></div>
+        <div class="profile-info">
+          <h2 id="staff-name">Staff Name</h2>
+          <div class="profile-meta">
+            <span>🪪 <strong id="staff-id">EMP000</strong></span>
+            <span>🏢 <span id="staff-dept">Department</span></span>
+            <span>💼 <span id="staff-position">Position</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Today's Status -->
+      <div class="today-status glass" id="today-status-card">
+        <div class="status-display" id="attendance-status">
+          <div class="status-icon status-absent">⏳</div>
+          <div class="status-text">
+            <strong data-i18n="notCheckedIn">Not Checked In</strong>
+            <p data-i18n="tapToCheckIn">Tap the button below to check in with a live photo</p>
+          </div>
+        </div>
+        <div id="checkin-photo-preview"></div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <button class="action-btn checkin-btn" id="btn-checkin">
+          <span data-i18n="checkInPhoto">📸 Check In with Live Photo</span>
+        </button>
+        <button class="action-btn checkout-btn" id="btn-checkout" style="display: none;">
+          <span data-i18n="checkOutPhoto">📤 Check Out with Live Photo</span>
+        </button>
+      </div>
+
+      <!-- Attendance History -->
+      <div class="history-section">
+        <h3 data-i18n="attendanceHistory">📅 My Attendance History</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Check In</th>
+                <th>Check Out</th>
+                <th>Location</th>
+                <th>Hours</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="history-tbody">
+              <tr><td colspan="6" class="empty-cell">
+                <div class="empty-state-small" data-i18n="noHistory">📭 No attendance history yet</div>
+              </td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/language.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/location.js"></script>
+  <script src="js/camera.js"></script>
+  <script src="js/staff.js"></script>
+  <script>
+    function dismissPreloader() {
+      const preloader = document.getElementById('preloader');
+      if (!preloader || preloader.classList.contains('loaded')) return;
+      preloader.classList.add('loaded');
+      setTimeout(() => { if (preloader.parentNode) preloader.remove(); }, 500);
+    }
+    setTimeout(dismissPreloader, 1000);
+    if (document.readyState === 'complete') {
+      setTimeout(dismissPreloader, 300);
+    } else {
+      window.addEventListener('load', () => setTimeout(dismissPreloader, 300));
+    }
+
+    // Escape key listener for camera modal & photo viewer
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (typeof Camera !== 'undefined' && Camera.isActive) {
+          Camera.close();
+        }
+        const photoOverlay = document.querySelector('.photo-overlay.active');
+        if (photoOverlay) photoOverlay.remove();
+      }
+    });
+  </script>
+</body>
+</html>

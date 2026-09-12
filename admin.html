@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HotelLemon Admin Dashboard — Premium staff attendance management, analytics, and reporting.">
+  <title>HotelLemon — Admin Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="image/LOGO.png">
+</head>
+<body>
+
+  <!-- ═══ PRELOADER ═══ -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-ring">
+        <div class="preloader-ring-arc"></div>
+        <img src="image/LOGO.png" alt="HotelLemon" class="preloader-logo">
+      </div>
+      <div class="preloader-text">
+        <span>H</span><span>o</span><span>t</span><span>e</span><span>l</span><span>L</span><span>e</span><span>m</span><span>o</span><span>n</span>
+      </div>
+      <div class="preloader-bar">
+        <div class="preloader-bar-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="admin-layout">
+
+    <!-- ── Sidebar ──────────────────────────────────────── -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="sidebar-brand-icon">
+          <img src="image/LOGO.png" alt="HotelLemon" style="width:32px;height:32px;object-fit:contain;" onerror="this.style.display='none'">
+        </div>
+        <div class="sidebar-brand-text">
+          <h1 data-i18n="hotelLemon">HotelLemon</h1>
+          <span data-i18n="adminDashboard">Admin Dashboard</span>
+        </div>
+        <button class="sidebar-close-btn" id="sidebar-close" aria-label="Close menu">✕</button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-section="dashboard">
+          <span class="nav-icon">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+          </span>
+          <span data-i18n="dashboard">Dashboard</span>
+        </button>
+        <button class="nav-item" data-section="attendance">
+          <span class="nav-icon">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="m9 14 2 2 4-4"/></svg>
+          </span>
+          <span data-i18n="attendance">Attendance</span>
+        </button>
+        <button class="nav-item" data-section="staff">
+          <span class="nav-icon">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </span>
+          <span data-i18n="staffManagement">Staff Management</span>
+        </button>
+        <button class="nav-item" data-section="settings">
+          <span class="nav-icon">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </span>
+          <span data-i18n="settings">Settings</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="nav-item nav-logout" id="btn-logout">
+          <span class="nav-icon">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          </span>
+          <span data-i18n="logout">Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- ── Main Content ─────────────────────────────────── -->
+    <div class="main-content">
+
+      <header class="main-header">
+        <div class="main-header-left">
+          <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+          <h2 id="section-title" data-i18n="dashboardOverview">Dashboard Overview</h2>
+        </div>
+        <div class="main-header-right">
+          <div class="language-control">
+            <span class="language-icon">🌐</span>
+            <label for="language-select" class="sr-only">Language</label>
+            <select
+              id="language-select"
+              class="language-select"
+              aria-label="Select language">
+            </select>
+          </div>
+          <span class="header-clock" id="live-clock"></span>
+          <span class="header-date" id="current-date"></span>
+          <div class="header-admin" id="header-admin-profile">
+            <div class="header-admin-avatar">
+              <span>HM</span>
+              <span class="online-indicator"></span>
+            </div>
+            <div class="header-admin-info">
+              <span class="header-admin-name" id="admin-name">Hotel Manager</span>
+              <span class="header-admin-role">Administrator</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="main-body">
+
+        <!-- ═══ DASHBOARD ═══ -->
+        <section class="content-section active" id="section-dashboard">
+          <div class="stat-grid">
+            <div class="stat-card stat-total">
+              <div class="stat-card-row">
+                <div class="stat-card-icon">👥</div>
+              </div>
+              <div class="stat-card-value" id="stat-total">0</div>
+              <div class="stat-card-label" data-i18n="totalStaff">Total Staff</div>
+            </div>
+            <div class="stat-card stat-present">
+              <div class="stat-card-row">
+                <div class="stat-card-icon">✅</div>
+              </div>
+              <div class="stat-card-value" id="stat-present">0</div>
+              <div class="stat-card-label" data-i18n="presentToday">Present Today</div>
+            </div>
+            <div class="stat-card stat-absent">
+              <div class="stat-card-row">
+                <div class="stat-card-icon">❌</div>
+              </div>
+              <div class="stat-card-value" id="stat-absent">0</div>
+              <div class="stat-card-label" data-i18n="absent">Absent</div>
+            </div>
+            <div class="stat-card stat-late">
+              <div class="stat-card-row">
+                <div class="stat-card-icon">⏰</div>
+              </div>
+              <div class="stat-card-value" id="stat-late">0</div>
+              <div class="stat-card-label" data-i18n="lateArrivals">Late Arrivals</div>
+            </div>
+          </div>
+
+          <div class="section-panel">
+            <div class="section-panel-header">
+              <h3 data-i18n="todaysActivity">🕐 Today's Activity</h3>
+            </div>
+            <div class="section-panel-body" id="today-activity">
+              <div class="empty-state">
+                <div class="empty-icon">📭</div>
+                <p data-i18n="noAttendanceRecords">No attendance records for today yet</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ═══ ATTENDANCE ═══ -->
+        <section class="content-section" id="section-attendance">
+          <div class="filter-bar">
+            <input type="text" class="filter-search" id="filter-search" data-i18n-placeholder="searchByNameOrId" placeholder="🔍 Search by name or ID...">
+            <input type="date" id="filter-date">
+            <select id="filter-department">
+              <option value="" data-i18n="allDepartments">All Departments</option>
+              <option value="Front Desk">Front Desk</option>
+              <option value="Housekeeping">Housekeeping</option>
+              <option value="Kitchen">Kitchen</option>
+              <option value="Security">Security</option>
+              <option value="Maintenance">Maintenance</option>
+              <option value="Management">Management</option>
+            </select>
+            <button class="btn btn-primary" id="btn-export" data-i18n="exportCsv">📥 Export CSV</button>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Emp ID</th>
+                  <th>Name</th>
+                  <th>Department</th>
+                  <th>Check In</th>
+                  <th>Check Out</th>
+                  <th data-i18n="location">Location</th>
+                  <th>Hours</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="attendance-tbody">
+                <tr><td colspan="9" class="empty-cell">
+                  <div class="empty-state-small" data-i18n="noRecordsFound">📭 No records found</div>
+                </td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ═══ STAFF ═══ -->
+        <section class="content-section" id="section-staff">
+          <div class="staff-grid-header">
+            <h3 data-i18n="activeStaffMembers">Active Staff Members</h3>
+            <button class="btn btn-primary" id="btn-add-staff" data-i18n="addStaff">➕ Add Staff</button>
+          </div>
+          <div class="staff-grid" id="staff-grid"></div>
+        </section>
+
+        <!-- ═══ SETTINGS ═══ -->
+        <section class="content-section" id="section-settings">
+          <div class="settings-section">
+
+            <div class="settings-group">
+              <h3 data-i18n="hotelInformation">🏨 Hotel Information</h3>
+              <p>HotelLemon Staff Attendance System v2.0 — Premium Edition</p>
+              <div class="form-group">
+                <label data-i18n="hotelName">Hotel Name</label>
+                <input type="text" id="setting-hotel-name" value="HotelLemon" placeholder="Hotel Name">
+              </div>
+            </div>
+
+            <!-- Admin Credentials Change -->
+            <div class="settings-group">
+              <h3>🔑 Admin Account & Password</h3>
+              <p>Update administrator username and access password.</p>
+              <form id="admin-credentials-form">
+                <div class="form-group" style="margin-bottom:12px;">
+                  <label data-i18n="username">Admin Username</label>
+                  <input type="text" id="setting-admin-username" value="manager" required>
+                </div>
+                <div class="form-group" style="margin-bottom:12px;">
+                  <label data-i18n="password">New Password</label>
+                  <input type="password" id="setting-admin-password" data-i18n-placeholder="enterPassword" placeholder="Enter new password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm" style="margin-top:8px;">🔒 Update Credentials</button>
+              </form>
+            </div>
+
+            <!-- Global Shift Timing Policy -->
+            <div class="settings-group">
+              <h3 data-i18n="shiftPolicy">⏰ Shift Timing Policy & Rules</h3>
+              <p>Define standard shift times and grace periods for attendance evaluation.</p>
+              <form id="shift-policy-form">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label data-i18n="defaultShiftStart">Default Shift Start Time</label>
+                    <input type="time" id="setting-shift-start" value="09:00" required>
+                  </div>
+                  <div class="form-group">
+                    <label data-i18n="defaultShiftEnd">Default Shift End Time</label>
+                    <input type="time" id="setting-shift-end" value="17:00" required>
+                  </div>
+                  <div class="form-group">
+                    <label data-i18n="gracePeriod">Grace Period (Minutes)</label>
+                    <input type="number" id="setting-grace-period" value="15" min="0" max="60" required>
+                  </div>
+                </div>
+                <div class="policy-summary" id="policy-summary-box">
+                  <span>ℹ️ Policy:</span> Staff checking in before <strong id="summary-start" style="color:var(--blue)">09:00 AM</strong> are <strong style="color:var(--blue)">Early</strong>, between <strong id="summary-grace" style="color:var(--green)">09:00–09:15 AM</strong> are <strong style="color:var(--green)">On Time</strong>, and after <strong id="summary-late" style="color:var(--red)">09:15 AM</strong> are marked <strong style="color:var(--red)">Late</strong>.
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm" style="margin-top:14px;" data-i18n="savePolicy">💾 Save Policy Settings</button>
+              </form>
+            </div>
+
+            <!-- Individual Per-Staff Shift Timing Adjuster -->
+            <div class="settings-group settings-group-wide">
+              <h3 data-i18n="individualShiftTimings">👥 Individual Staff Shift Timings</h3>
+              <p>Customize specific shift schedules and timings for individual staff members.</p>
+
+              <div class="table-wrap" style="margin-top: 16px;">
+                <table class="shift-table">
+                  <thead>
+                    <tr>
+                      <th>Staff Member</th>
+                      <th>Department</th>
+                      <th>Assigned Shift Type</th>
+                      <th>Start Time</th>
+                      <th>End Time</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="staff-shift-tbody">
+                    <!-- Populated dynamically via JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="settings-group">
+              <h3>🗑️ Data Management</h3>
+              <p>Reset all data including staff records, attendance history, and system settings to factory defaults. This action cannot be undone.</p>
+              <button class="btn btn-danger" id="btn-reset-data" data-i18n="resetData">⚠️ Reset All Data</button>
+            </div>
+
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/language.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/admin.js"></script>
+  <script>
+    function dismissPreloader() {
+      const preloader = document.getElementById('preloader');
+      if (!preloader || preloader.classList.contains('loaded')) return;
+      preloader.classList.add('loaded');
+      setTimeout(() => { if (preloader.parentNode) preloader.remove(); }, 500);
+    }
+    setTimeout(dismissPreloader, 1000);
+    if (document.readyState === 'complete') {
+      setTimeout(dismissPreloader, 300);
+    } else {
+      window.addEventListener('load', () => setTimeout(dismissPreloader, 300));
+    }
+
+    // Mobile sidebar toggle & keyboard handling
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const closeBtn = document.getElementById('sidebar-close');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+    function closeMobileSidebar() {
+      if (sidebar) sidebar.classList.remove('open');
+      if (sidebarOverlay) sidebarOverlay.classList.remove('active');
+    }
+
+    if (menuBtn) {
+      menuBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('open');
+        sidebarOverlay.classList.toggle('active');
+      });
+    }
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeMobileSidebar);
+    }
+    if (sidebarOverlay) {
+      sidebarOverlay.addEventListener('click', closeMobileSidebar);
+    }
+
+    // Escape key listener for sidebar and overlays
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeMobileSidebar();
+        if (typeof Camera !== 'undefined' && Camera.isActive) {
+          Camera.close();
+        }
+        const confirmOverlay = document.querySelector('.confirm-overlay.active');
+        if (confirmOverlay) {
+          confirmOverlay.classList.remove('active');
+          setTimeout(() => confirmOverlay.remove(), 300);
+        }
+        const photoOverlay = document.querySelector('.photo-overlay.active');
+        if (photoOverlay) photoOverlay.remove();
+      }
+    });
+  </script>
+</body>
+</html>

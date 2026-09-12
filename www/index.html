@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HotelLemon Staff Attendance System — Premium secure login for admin and staff with live photo verification.">
+  <title>HotelLemon — Staff Attendance</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="image/LOGO.png">
+</head>
+<body>
+
+  <!-- ═══ PRELOADER ═══ -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-ring">
+        <div class="preloader-ring-arc"></div>
+        <img src="image/LOGO.png" alt="HotelLemon" class="preloader-logo" onerror="this.style.display='none'">
+      </div>
+      <div class="preloader-text">
+        <span>H</span><span>o</span><span>t</span><span>e</span><span>l</span><span>L</span><span>e</span><span>m</span><span>o</span><span>n</span>
+      </div>
+      <div class="preloader-bar">
+        <div class="preloader-bar-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Animated Background Scene -->
+  <div class="bg-scene">
+    <div class="bg-gradient"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
+    <div class="bg-particles">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+    </div>
+    <div class="bg-vignette"></div>
+  </div>
+
+  <!-- Login Page -->
+  <main class="login-page">
+    <div class="login-card glass-premium">
+
+      <!-- Language Selector -->
+      <div style="display: flex; justify-content: flex-end; margin-bottom: 16px;">
+        <div class="language-control">
+          <span class="language-icon">🌐</span>
+          <label for="language-select" class="sr-only">Language</label>
+          <select
+            id="language-select"
+            class="language-select"
+            aria-label="Select language">
+          </select>
+        </div>
+      </div>
+
+      <!-- Logo -->
+      <div class="login-logo-wrap">
+        <div class="login-logo-ring">
+          <img src="image/LOGO.png" alt="HotelLemon Logo" class="login-logo-img" onerror="this.style.display='none'">
+        </div>
+      </div>
+
+      <h1 class="login-brand" data-i18n="hotelLemon">HotelLemon</h1>
+      <p class="login-subtitle" data-i18n="staffAttendance">Staff Attendance System</p>
+
+      <!-- Role Toggle -->
+      <div class="role-toggle">
+        <button class="role-toggle-btn active" id="toggle-admin" type="button" data-i18n="adminLogin">🔑 Admin Login</button>
+        <button class="role-toggle-btn" id="toggle-staff" type="button" data-i18n="staffLogin">👤 Staff Login</button>
+      </div>
+
+      <!-- Admin Login Form -->
+      <form class="login-form" id="admin-form">
+        <div class="form-group">
+          <label for="admin-username" data-i18n="username">Username</label>
+          <div class="input-icon-wrap">
+            <span class="input-icon">👤</span>
+            <input type="text" id="admin-username" data-i18n-placeholder="enterAdminUsername" placeholder="Enter admin username" autocomplete="username" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="admin-password" data-i18n="password">Password</label>
+          <div class="input-icon-wrap">
+            <span class="input-icon">🔒</span>
+            <input type="password" id="admin-password" data-i18n-placeholder="enterPassword" placeholder="Enter password" autocomplete="current-password" required>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg" style="width:100%" data-i18n="signInAdmin">
+          Sign In as Admin →
+        </button>
+      </form>
+
+      <!-- Staff Login Form -->
+      <form class="login-form" id="staff-form" style="display: none;">
+        <div class="form-group">
+          <label for="staff-empid" data-i18n="employeeId">Employee ID</label>
+          <div class="input-icon-wrap">
+            <span class="input-icon">🪪</span>
+            <input type="text" id="staff-empid" data-i18n-placeholder="enterEmployeeId" placeholder="e.g. EMP001" autocomplete="username" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="staff-password" data-i18n="password">Password</label>
+          <div class="input-icon-wrap">
+            <span class="input-icon">🔒</span>
+            <input type="password" id="staff-password" data-i18n-placeholder="enterPassword" placeholder="Enter password" autocomplete="current-password" required>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg" style="width:100%" data-i18n="signInStaff">
+          Sign In as Staff →
+        </button>
+      </form>
+
+
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/language.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    // Preloader — bulletproof dismissal
+    function dismissPreloader() {
+      const preloader = document.getElementById('preloader');
+      if (!preloader || preloader.classList.contains('loaded')) return;
+      preloader.classList.add('loaded');
+      setTimeout(() => { if (preloader.parentNode) preloader.remove(); }, 500);
+    }
+    setTimeout(dismissPreloader, 1000);
+    if (document.readyState === 'complete') {
+      setTimeout(dismissPreloader, 300);
+    } else {
+      window.addEventListener('load', () => setTimeout(dismissPreloader, 300));
+    }
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const user = DB.getCurrentUser();
+      if (user) {
+        window.location.href = user.role === 'admin' ? 'admin.html' : 'staff.html';
+        return;
+      }
+
+      const toggleAdmin = document.getElementById('toggle-admin');
+      const toggleStaff = document.getElementById('toggle-staff');
+      const adminForm = document.getElementById('admin-form');
+      const staffForm = document.getElementById('staff-form');
+
+      toggleAdmin.addEventListener('click', () => {
+        toggleAdmin.classList.add('active');
+        toggleStaff.classList.remove('active');
+        adminForm.style.display = 'flex';
+        staffForm.style.display = 'none';
+      });
+
+      toggleStaff.addEventListener('click', () => {
+        toggleStaff.classList.add('active');
+        toggleAdmin.classList.remove('active');
+        staffForm.style.display = 'flex';
+        adminForm.style.display = 'none';
+      });
+
+      adminForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const username = document.getElementById('admin-username').value.trim();
+        const password = document.getElementById('admin-password').value;
+        const result = DB.loginAdmin(username, password);
+        if (result) {
+          App.toast(I18n.t('welcomeBack', { name: result.name }), 'success');
+          setTimeout(() => window.location.href = 'admin.html', 800);
+        } else {
+          App.toast(I18n.t('invalidAdmin'), 'error');
+          document.getElementById('admin-password').value = '';
+        }
+      });
+
+      staffForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const empId = document.getElementById('staff-empid').value.trim();
+        const password = document.getElementById('staff-password').value;
+        const result = DB.loginStaff(empId, password);
+        if (result) {
+          App.toast(I18n.t('welcomeStaff', { name: result.name }), 'success');
+          setTimeout(() => window.location.href = 'staff.html', 800);
+        } else {
+          App.toast(I18n.t('invalidStaff'), 'error');
+          document.getElementById('staff-password').value = '';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">HotelLemon</string>
+    <string name="title_activity_main">HotelLemon</string>
+    <string name="package_name">com.hotellemon.attendance</string>
+    <string name="custom_url_scheme">com.hotellemon.attendance</string>
+</resources>

@@ -1,0 +1,31 @@
+{
+  "name": "hotellemon",
+  "version": "2.0.0",
+  "description": "HotelLemon Staff Attendance Management System — Capacitor Mobile & PWA",
+  "main": "www/index.html",
+  "scripts": {
+    "start": "npx serve . -p 8000",
+    "dev": "npx serve . -p 8000",
+    "build": "npx cap copy",
+    "cap:sync": "npx cap sync",
+    "cap:open:android": "npx cap open android",
+    "cap:build:android": "npx cap copy android && cd android && gradlew.bat assembleDebug"
+  },
+  "keywords": [
+    "hotellemon",
+    "attendance",
+    "capacitor",
+    "pwa",
+    "android"
+  ],
+  "author": "HotelLemon Team",
+  "license": "MIT",
+  "dependencies": {
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/assets": "^3.0.0",
+    "@capacitor/camera": "^6.0.0",
+    "@capacitor/cli": "^6.0.0",
+    "@capacitor/core": "^6.0.0",
+    "@capacitor/ios": "^6.0.0"
+  }
+}
