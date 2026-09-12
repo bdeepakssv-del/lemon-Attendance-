@@ -2,7 +2,6 @@
   "appId": "com.hotellemon.attendance",
   "appName": "HotelLemon",
   "webDir": "www",
-  "bundledWebRuntime": false,
   "server": {
     "androidScheme": "https"
   }

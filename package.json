@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npx serve . -p 8000",
     "dev": "npx serve . -p 8000",
-    "build": "npx cap copy",
+    "build": "node build-vercel.js",
     "cap:sync": "npx cap sync",
     "cap:open:android": "npx cap open android",
     "cap:build:android": "npx cap copy android && cd android && gradlew.bat assembleDebug"
