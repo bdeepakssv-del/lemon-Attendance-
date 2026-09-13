@@ -1,5 +1,9 @@
 {
   "version": 2,
   "outputDirectory": "public",
-  "cleanUrls": true
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/admin", "destination": "/admin.html" },
+    { "source": "/staff", "destination": "/staff.html" }
+  ]
 }
